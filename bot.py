@@ -30,7 +30,7 @@ client = commands.Bot(command_prefix=get_prefix, intents=intents)
 exts=['music'] #Add your Cog extensions here
 
 
-@bot.event
+@client.event
 async def on_ready():
     song_name='TWICE - What is love?'  #Status name
     activity_type=discord.ActivityType.listening #Status type
