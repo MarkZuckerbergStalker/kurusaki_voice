@@ -15,9 +15,14 @@ def get_prefix(bot, msg):
 
     return commands.when_mentioned_or(*prefixes)(bot, msg)
 
-"bot=commands.Bot(command_prefix=get_prefix,description='Multipurpose Discord Bot')"
+"""bot=commands.Bot(command_prefix=get_prefix,description='Multipurpose Discord Bot')""""
 
-client=commands.Bot(command_prefix=get_prefix,description='tasoeurlatepu',intents=intents)
+"""client=commands.Bot(command_prefix=get_prefix,description='tasoeurlatepu',intents=intents)"""
+
+intents = discord.Intents.all()
+intents.message_content = True
+intents.members = True
+client = commands.Bot(command_prefix=get_prefix, intents=intents)
 
 
 
