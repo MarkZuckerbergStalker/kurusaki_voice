@@ -23,7 +23,7 @@ intents = discord.Intents.all()
 intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix=get_prefix, intents=intents)
-Bot = commands.client(command_prefix=get_prefix, intents=intents)
+Bot = commands.Bot(command_prefix=get_prefix, intents=intents)
 
 
 
