@@ -132,8 +132,8 @@ class Downloader(discord.PCMVolumeTransformer):
 
 
 class MusicPlayer(commands.Cog, name='Music'):
-    def __init__(self, bot):
-        self.bot = bot
+    def __init__(self, client):
+        self.client = client
         # self.music=self.database.find_one('music')
         self.player = {
             "audio_files": []
@@ -163,7 +163,7 @@ class MusicPlayer(commands.Cog, name='Music'):
         """
         Clear the server's playlist after bot leave the voice channel
         """
-        if after.channel is None and user.id == self.bot.user.id:
+        if after.channel is None and user.id == self.client.user.id:
             try:
                 self.player[user.guild.id]['queue'].clear()
             except KeyError:
@@ -284,7 +284,7 @@ class MusicPlayer(commands.Cog, name='Music'):
         new_opts['outtmpl'] = new_opts['outtmpl'].format(audio_name)
 
         ytdl = youtube_dl.YoutubeDL(new_opts)
-        download1 = await Downloader.video_url(song, ytdl=ytdl, loop=self.bot.loop)
+        download1 = await Downloader.video_url(song, ytdl=ytdl, loop=self.client.loop)
         download = download1[0]
         data = download1[1]
         self.player[msg.guild.id]['name'] = audio_name
@@ -635,5 +635,5 @@ class MusicPlayer(commands.Cog, name='Music'):
             return await msg.send("Manage channels or admin perms required to change volume", delete_after=30)
 
 
-def setup(bot):
-    bot.add_cog(MusicPlayer(bot))
+def setup(client):
+    client.add_cog(MusicPlayer(client))
