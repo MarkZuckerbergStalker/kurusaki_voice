@@ -11,7 +11,7 @@ load_dotenv()
 def get_prefix(bot, msg):
     """A callable Prefix for our bot. This could be edited to allow per server prefixes."""
 
-    prefixes = ['s.'] #Your bot prefix(s)
+    prefixes = ['*'] #Your bot prefix(s)
 
     return commands.when_mentioned_or(*prefixes)(bot, msg)
 
@@ -23,7 +23,7 @@ intents = discord.Intents.all()
 intents.message_content = True
 intents.members = True
 client = commands.Bot(command_prefix=get_prefix, intents=intents)
-
+Bot = commands.client(command_prefix=get_prefix, intents=intents)
 
 
 
@@ -43,7 +43,7 @@ async def on_ready():
 
 
 for i in exts:
-    client.load_extension(i)
+    Bot.load_extension(i)
 
 
-client.run(os.environ['TOKEN'])
+Bot.run(os.environ['TOKEN'])
