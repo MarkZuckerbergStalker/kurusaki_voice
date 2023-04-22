@@ -43,7 +43,7 @@ async def on_ready():
 
 
 for i in exts:
-    bot.load_extension(i)
+    client.load_extension(i)
 
 
-bot.run(os.environ['TOKEN'])
+client.run(os.environ['TOKEN'])
