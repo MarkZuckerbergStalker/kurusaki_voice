@@ -22,7 +22,7 @@ def get_prefix(bot, msg):
 intents = discord.Intents.all()
 intents.message_content = True
 intents.members = True
-client = commands.client(command_prefix=get_prefix, intents=intents)
+client = commands.Bot(command_prefix=get_prefix, intents=intents)
 
 
 
